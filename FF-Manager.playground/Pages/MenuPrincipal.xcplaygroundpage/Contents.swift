@@ -17,7 +17,7 @@ class MenuPrincipalViewController : UIViewController {
     let initialText2 = UILabel()
     let buttonJS = UIButton()
     let buttonT = UIButton()
-    
+        
     override func loadView() {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9529411765, blue: 0.9098039216, alpha: 1)
@@ -355,31 +355,28 @@ class MenuNovoJogo_Times : UIViewController {
         @IBAction func touchedButton(){
             teste = 0
             let home1 = Home(screenType: .ipadPro12_9, isPortrait: false)
-            home1.scale(to: 0.5)
+            //home1.scale(to: 0.5)
             self.navigationController?.show(home1, sender: nil)
         }
         @IBAction func touchedButton2(){
             teste = 1
             let home1 = Home(screenType: .ipadPro12_9, isPortrait: false)
-            home1.scale(to: 0.5)
             self.navigationController?.show(home1, sender: nil)
         }
         @IBAction func touchedButton3(){
             teste = 2
             let home1 = Home(screenType: .ipadPro12_9, isPortrait: false)
-            home1.scale(to: 0.5)
             self.navigationController?.show(home1, sender: nil)
         }
         @IBAction func touchedButton4(){
             teste = 3
             let home1 = Home(screenType: .ipadPro12_9, isPortrait: false)
-            home1.scale(to: 0.5)
             self.navigationController?.show(home1, sender: nil)
         }
         @IBAction func touchedButton5(){
             teste = 4
             let home1 = Home(screenType: .ipadPro12_9, isPortrait: false)
-            home1.scale(to: 0.5)
+           
             self.navigationController?.show(home1, sender: nil)
         }
     
@@ -591,22 +588,14 @@ class Home : UIViewController {
 }
 
 let menuPrincipalViewController = MenuPrincipalViewController(screenType: .ipadPro12_9, isPortrait: false)
-menuPrincipalViewController.scale(to: 0.5)
-
 let menuNovoJogo_Nome = MenuNovoJogo_Nome(screenType: .ipadPro12_9, isPortrait: false)
-menuNovoJogo_Nome.scale(to: 0.5)
-
 let menuNovoJogo_Times = MenuNovoJogo_Times(screenType: .ipadPro12_9, isPortrait: false)
-menuNovoJogo_Times.scale(to: 0.5)
-
 let home = Home(screenType: .ipadPro12_9, isPortrait: false)
-home.scale(to: 0.5)
 
 let navigation = UINavigationController(rootViewController: menuPrincipalViewController)
 navigation.navigationBar.isHidden = true
+PlaygroundPage.current.liveView = navigation.scale(to: 0.5)
 
-
-PlaygroundPage.current.liveView = navigation
 
 
 

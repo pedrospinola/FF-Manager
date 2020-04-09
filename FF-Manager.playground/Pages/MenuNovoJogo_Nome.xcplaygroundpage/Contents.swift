@@ -17,13 +17,11 @@ class MyViewController : UIViewController {
     let button5 = UIButton()
     
     var nome:String = "Normal"
-
-    @IBOutlet weak var nomeUsuário: UITextField!
     
     override func loadView() {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9529411765, blue: 0.9098039216, alpha: 1)
-        
+    
        //Adicionando o título principal
         
         label.frame = CGRect(x: 477, y: 85, width: 430, height: 82)
