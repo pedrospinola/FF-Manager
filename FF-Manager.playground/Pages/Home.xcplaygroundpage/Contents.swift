@@ -15,7 +15,7 @@ class MercadoTableViewCell: UITableViewCell {
     var textTest = UILabel()
     var textTest2 = UILabel()
     var textTest3 = UILabel()
-    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         imagemTest.frame = CGRect(x: 20, y: 40, width: 65, height: 65)
@@ -93,10 +93,15 @@ class Home : UIViewController, UITableViewDelegate, UITableViewDataSource {
     var logoTime:String = "VivoKeyd.png"
     
     var mercadoTableView = UITableView()
-    var nomeJogador:[String] = ["Nobru", "Lukas", "Peu", "Will", "Lukastd", "Fixa", " Bradoock", "Vinizx", "Moreira", "Raposo" ]
-    var rankJogador:[Int] = [63, 62, 61, 58, 57, 55, 53, 53, 52, 50]
-    var preçoJogador:[Float] = [3500.0, 3200.0, 3150.0, 3100.0, 3060.0, 3000.0, 2950.0, 2930.0, 2880.0, 2800.0]
-    var timeJogador: [String] = [ "TeamLiquid.png", "Intz.png", "TeamLiquid.png", "Loud.png", "TeamLiquid.png", "Corinthias.png", "Loud.png", "Loud.png", "Intz.png", "TeamLiquid.png"]
+    var nomeJogadorCompra:[String] = ["Nobru", "Lukas", "Peu", "Will", "Lukastd", "Fixa", " Bradoock", "Vinizx", "Moreira", "Raposo" ]
+    var rankJogadorCompra:[Int] = [63, 62, 61, 58, 57, 55, 53, 53, 52, 50]
+    var preçoJogadorCompra:[Float] = [3500.0, 3200.0, 3150.0, 3100.0, 3060.0, 3000.0, 2950.0, 2930.0, 2880.0, 2800.0]
+    var timeJogadorCompra: [String] = [ "TeamLiquid.png", "Intz.png", "TeamLiquid.png", "Loud.png", "TeamLiquid.png", "Corinthias.png", "Loud.png", "Loud.png", "Intz.png", "TeamLiquid.png"]
+    
+    var nomeJogadorVenda:[String] = ["Lukastd", "Fixa", " Bradoock", "Vinizx", "Moreira", "Raposo"]
+    var rankJogadorVenda:[Int] = [57, 55, 53, 53, 52, 50]
+    var preçoJogadorVenda:[Float] = [3000.0, 2890.0, 2850.0, 2750.0, 2725.0, 2635.0]
+    var timeJogadorVenda: [String] = ["TeamLiquid.png", "Intz.png", "TeamLiquid.png", "Loud.png", "TeamLiquid.png", "Corinthias.png", "Loud.png", "Loud.png", "Intz.png", "TeamLiquid.png"]
     
     var mercadoTableViewVenda = UITableView()
     
@@ -249,6 +254,7 @@ class Home : UIViewController, UITableViewDelegate, UITableViewDataSource {
         linhaMercado4.contentMode = .scaleToFill
         linhaMercado4.frame = CGRect(x: 538, y: 105, width: 1, height: 919)
         linhaMercado4.image = UIImage(imageLiteralResourceName: "Line3.png")
+        
         //Adicionando estrelas
         
         starTime.contentMode = .scaleToFill
@@ -347,7 +353,11 @@ class Home : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return nomeJogador.count
+        if tableView == mercadoTableView{
+            return nomeJogadorCompra.count
+        }else{
+            return nomeJogadorVenda.count
+        }
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -357,17 +367,17 @@ class Home : UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
             if tableView == mercadoTableView{
                 
-                cell.textTest.text = nomeJogador[indexPath.row]
-                cell.textTest2.text = String(format: "%i",rankJogador[indexPath.row])
-                cell.textTest3.text = " R$ " + String(format: "%.2f", preçoJogador[indexPath.row])
-                cell.imagemTest.image = UIImage(imageLiteralResourceName: timeJogador[indexPath.row])
+                cell.textTest.text = nomeJogadorCompra[indexPath.row]
+                cell.textTest2.text = String(format: "%i",rankJogadorCompra[indexPath.row])
+                cell.textTest3.text = " R$ " + String(format: "%.2f", preçoJogadorCompra[indexPath.row])
+                cell.imagemTest.image = UIImage(imageLiteralResourceName: timeJogadorCompra[indexPath.row])
                 cell.imagemCarrinho.setImage(UIImage(imageLiteralResourceName: "carrinho.png"), for: .normal)
         
             }
             else{
-                cell.textTest.text = nomeJogador[indexPath.row]
-                cell.textTest2.text = String(format: "%i",rankJogador[indexPath.row])
-                cell.textTest3.text = " R$ " + String(format: "%.2f", preçoJogador[indexPath.row])
+                cell.textTest.text = nomeJogadorVenda[indexPath.row]
+                cell.textTest2.text = String(format: "%i",rankJogadorVenda[indexPath.row])
+                cell.textTest3.text = " R$ " + String(format: "%.2f", preçoJogadorVenda[indexPath.row])
                 //aqui embaixo eu tenho q colocar a imagem do time q o usuário selecionou
                 cell.imagemTest.image = UIImage(imageLiteralResourceName: logoTime)
                 cell.imagemCarrinho.setImage(UIImage(imageLiteralResourceName: "carrinhoVenda.png"), for: .normal)
