@@ -1,14 +1,11 @@
-//: A UIKit based Playground for presenting user interface
-
-  
+import Foundation
 import UIKit
 import PlaygroundSupport
 
 var teste:Int = 0
 var nome:String = "Nome"
-var premio: Float = 0.0
 
-class MenuPrincipalViewController : UIViewController {
+public class MenuPrincipalViewController : UIViewController {
     
   //Declarando os componentes
 
@@ -20,7 +17,7 @@ class MenuPrincipalViewController : UIViewController {
     let buttonJS = UIButton()
     let buttonT = UIButton()
         
-    override func loadView() {
+    override public func loadView() {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9529411765, blue: 0.9098039216, alpha: 1)
 
@@ -97,7 +94,7 @@ class MenuPrincipalViewController : UIViewController {
         
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         buttonNJ.addTarget(self, action: #selector(MenuPrincipalViewController.touchedButtonNJ), for: .touchUpInside)
         buttonJS.addTarget(self, action: #selector(MenuPrincipalViewController.touchedButtonJS), for: .touchUpInside)
         buttonT.addTarget(self, action: #selector(MenuPrincipalViewController.touchedButtonT), for: .touchUpInside)
@@ -1068,7 +1065,7 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
                     jogadoresTransicao[0] = jogadoresDentroDoTime[5]
                     jogadoresDentroDoTime[5] = jogadoresDentroDoTime[2]
                     jogadoresDentroDoTime[2] = jogadoresTransicao[0]
-                    jogadoresTransicao
+
 
                     jogador03.text = String(jogadoresDentroDoTime[2].nome)
                     jogador06.text = String(jogadoresDentroDoTime[5].nome)
@@ -1116,7 +1113,7 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
                     jogadoresTransicao[0] = jogadoresDentroDoTime[5]
                     jogadoresDentroDoTime[5] = jogadoresDentroDoTime[3]
                     jogadoresDentroDoTime[3] = jogadoresTransicao[0]
-                    jogadoresTransicao
+
 
                     jogador04.text = String(jogadoresDentroDoTime[3].nome)
                     jogador06.text = String(jogadoresDentroDoTime[5].nome)
@@ -1271,11 +1268,16 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
     
         @IBAction func touchedButtonNext(){
             var simulacao: Int = 0
-            premio = 1500.0
             simulacao = Int.random(in: 150...mediaOverall*5)
-            if simulacao > 225{
-                times[teste].cash = times[teste].cash + premio
+            if simulacao > 230{
+                times[teste].cash = times[teste].cash + 400
                 nVit = nVit + 1
+            } else{
+                if times[teste].cash >= 200{
+                times[teste].cash = times[teste].cash - 200
+                } else{
+                    times[teste].cash = 0.0
+                }
             }
             nPartidas = nPartidas + 1
             numeroPartidas.text = "Número de partidas: " + String(format: "%i",nPartidas)
@@ -1311,14 +1313,4 @@ let menuPrincipalViewController = MenuPrincipalViewController(screenType: .ipadP
 let menuNovoJogo_Nome = MenuNovoJogo_Nome(screenType: .ipadPro12_9, isPortrait: false)
 let menuNovoJogo_Times = MenuNovoJogo_Times(screenType: .ipadPro12_9, isPortrait: false)
 let home = Home(screenType: .ipadPro12_9, isPortrait: false)
-
-//mudar para menuPrincipalViewController
-
-let navigation = UINavigationController(rootViewController: menuPrincipalViewController)
-navigation.navigationBar.isHidden = true
-PlaygroundPage.current.liveView = navigation.scale(to: 0.5)
-
-
-
-
 
