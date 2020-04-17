@@ -4,6 +4,9 @@
 import UIKit
 import PlaygroundSupport
 
+let cfURL = Bundle.main.url(forResource: "happy-monkey", withExtension: "ttf")! as CFURL
+  CTFontManagerRegisterFontsForURL(cfURL, CTFontManagerScope.process, nil)
+
 let menuPrincipalViewController = MenuPrincipalViewController(screenType: .ipadPro12_9, isPortrait: false)
 
 let navigation = UINavigationController(rootViewController: menuPrincipalViewController)

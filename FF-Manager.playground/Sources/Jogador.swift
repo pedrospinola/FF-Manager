@@ -33,11 +33,11 @@ public class MercadoCell: UITableViewCell {
         timeImage.frame = CGRect(x: 20, y: 40, width: 65, height: 65)
         timeImage.contentMode = .scaleToFill
         buttonCar.frame = CGRect(x: 471, y: 58, width: 41, height: 38)
-        nomeLabel.frame = CGRect(x: 155, y: 20, width: 537.5, height: 114)
+        nomeLabel.frame = CGRect(x: 185, y: 20, width: 537.5, height: 114)
         nomeLabel.font = nomeLabel.font.withSize(27)
         overallLabel.frame = CGRect(x: 107, y: 20, width: 537.5, height: 114)
         overallLabel.font = overallLabel.font.withSize(27)
-        preçoLabel.frame = CGRect(x: 285, y: 20, width: 537.5, height: 114)
+        preçoLabel.frame = CGRect(x: 312, y: 20, width: 537.5, height: 114)
         preçoLabel.font = preçoLabel.font.withSize(27)
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)

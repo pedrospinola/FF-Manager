@@ -16,6 +16,7 @@ public class MenuPrincipalViewController : UIViewController {
     let initialText2 = UILabel()
     let buttonJS = UIButton()
     let buttonT = UIButton()
+    let frame = UIView()
         
     override public func loadView() {
         let view = UIView()
@@ -23,21 +24,25 @@ public class MenuPrincipalViewController : UIViewController {
 
        //Adicionando o título principal
         
-        label.frame = CGRect(x: 477, y: 85, width: 430, height: 82)
+        label.frame = CGRect(x: 477, y: 85, width: 430, height: 96)
         label.text = "FF-Manager"
         label.textColor = .black
         label.adjustsFontSizeToFitWidth = true
-        label.font = label.font.withSize(80)
+        label.font = UIFont(name: "Happy Monkey", size: 80)
         label.textAlignment = .center
         
     //Texto da tela do menu
     
-        initialText.frame = CGRect(x: 24, y: 313, width: 890, height: 541)
+        frame.frame = CGRect(x: 18, y: 320, width: 922, height: 545)
+        frame.backgroundColor = .lightGray
+        frame.layer.cornerRadius = 20
+        
+        initialText.frame = CGRect(x: 27, y: 313, width: 890, height: 541)
         initialText.text = "Bem vindo ao FF-Manager!\n\nAqui você assume o papel do gerente da sua equipe favorita de free fire! \n\nCompre jogadores e escale seu time para as batalhas! \n\nAssista o desempenho do seu time e torça pela vitória!\n\nGanhe moedas vencendo as disputas e vá ao mercado comprar jogadores cada vez mais fortes!"
         initialText.textColor = .black
-        initialText.backgroundColor = .lightGray
+        initialText.backgroundColor = .clear
         initialText.adjustsFontSizeToFitWidth = true
-        initialText.font = initialText.font.withSize(37)
+        initialText.font = UIFont(name: "Happy Monkey", size: 34)
         initialText.textAlignment = .left
         initialText.numberOfLines = 11
         
@@ -47,31 +52,31 @@ public class MenuPrincipalViewController : UIViewController {
         initialText2.text = "Eai, preparado para se tornar um Pro Manager?"
         initialText2.textColor = .black
         initialText2.adjustsFontSizeToFitWidth = true
-        initialText2.font = initialText.font.withSize(50)
+        initialText2.font = UIFont(name: "Happy Monkey", size: 50)
         initialText2.textAlignment = .left
 
         //Adicionando os botões
         
-        buttonNJ.frame = CGRect(x: 965, y: 550, width: 315, height: 75)
+        buttonNJ.frame = CGRect(x: 967, y: 550, width: 315, height: 75)
         buttonNJ.setTitle("Novo jogo", for: .normal)
         buttonNJ.backgroundColor = #colorLiteral(red: 0.3529411765, green: 0.6823529412, blue: 0.1960784314, alpha: 1)
         buttonNJ.setTitleColor(.black, for: .normal)
-        buttonNJ.titleLabel?.font = UIFont(name: "Arial", size: 50)
+        buttonNJ.titleLabel?.font = UIFont(name: "Happy Monkey", size: 48)
         buttonNJ.layer.cornerRadius = 12
         
-        buttonJS.frame = CGRect(x: 965, y: 650, width: 315, height: 75)
-        buttonJS.setTitle("Jogos salvos", for: .normal)
+        buttonJS.frame = CGRect(x: 967, y: 650, width: 315, height: 75)
+        buttonJS.setTitle("Jogo salvo", for: .normal)
         buttonJS.backgroundColor = #colorLiteral(red: 0.3529411765, green: 0.6823529412, blue: 0.1960784314, alpha: 1)
         buttonJS.setTitleColor(.black, for: .normal)
-        buttonJS.titleLabel?.font = UIFont(name: "Arial", size: 50)
+        buttonJS.titleLabel?.font = UIFont(name: "Happy Monkey", size: 48)
         buttonJS.layer.cornerRadius = 12
 
         
-        buttonT.frame = CGRect(x: 965, y: 750, width: 315, height: 75)
+        buttonT.frame = CGRect(x: 967, y: 750, width: 315, height: 75)
         buttonT.setTitle("Tutorial", for: .normal)
         buttonT.backgroundColor = #colorLiteral(red: 0.3529411765, green: 0.6823529412, blue: 0.1960784314, alpha: 1)
         buttonT.setTitleColor(.black, for: .normal)
-        buttonT.titleLabel?.font = UIFont(name: "Arial", size: 50)
+        buttonT.titleLabel?.font = UIFont(name: "Happy Monkey", size: 48)
         buttonT.layer.cornerRadius = 12
 
         
@@ -83,6 +88,7 @@ public class MenuPrincipalViewController : UIViewController {
         
         
         view.addSubview(menu)
+        view.addSubview(frame)
         view.addSubview(label)
         view.addSubview(initialText)
         view.addSubview(initialText2)
@@ -142,7 +148,7 @@ class MenuNovoJogo_Nome : UIViewController {
         label.text = "FF-Manager"
         label.textColor = .black
         label.adjustsFontSizeToFitWidth = true
-        label.font = label.font.withSize(80)
+        label.font = UIFont(name: "Happy Monkey", size: 80)
         label.textAlignment = .center
         
         //Texto do menu, sem background
@@ -151,7 +157,7 @@ class MenuNovoJogo_Nome : UIViewController {
         initialText2.text = "Como você gostaria de ser chamado?"
         initialText2.textColor = .black
         initialText2.adjustsFontSizeToFitWidth = true
-        initialText2.font = initialText2.font.withSize(65)
+        initialText2.font = UIFont(name: "Happy Monkey", size: 65)
         initialText2.textAlignment = .left
         
         //Adicionando o Text Field
@@ -159,7 +165,7 @@ class MenuNovoJogo_Nome : UIViewController {
         textField.frame = CGRect(x: 35, y: 520, width: 1003, height: 62)
         textField.backgroundColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         textField.layer.cornerRadius = 18
-        textField.font = textField.font?.withSize(30)
+        textField.font = UIFont(name: "Happy Monkey", size: 30)
 
         //Adicionando os botões
         
@@ -167,7 +173,7 @@ class MenuNovoJogo_Nome : UIViewController {
         button5.setTitle("Avançar", for: .normal)
         button5.backgroundColor = #colorLiteral(red: 0.3529411765, green: 0.6823529412, blue: 0.1960784314, alpha: 1)
         button5.setTitleColor(.black, for: .normal)
-        button5.titleLabel?.font = UIFont(name: "Arial", size: 30)
+        button5.titleLabel?.font = UIFont(name: "Happy Monkey", size: 29)
         button5.layer.cornerRadius = 20
 
         
@@ -245,7 +251,7 @@ class MenuNovoJogo_Times : UIViewController {
         label.text = "FF-Manager"
         label.textColor = .black
         label.adjustsFontSizeToFitWidth = true
-        label.font = label.font.withSize(80)
+        label.font = UIFont(name: "Happy Monkey", size: 80)
         label.textAlignment = .center
         
         //Texto do menu, sem background
@@ -254,7 +260,7 @@ class MenuNovoJogo_Times : UIViewController {
         initialText2.text = "Para começar, escolha seu time:"
         initialText2.textColor = .black
         initialText2.adjustsFontSizeToFitWidth = true
-        initialText2.font = initialText2.font.withSize(65)
+        initialText2.font = UIFont(name: "Happy Monkey", size: 65)
         initialText2.textAlignment = .left
 
         //Adicionando os botões
@@ -263,7 +269,7 @@ class MenuNovoJogo_Times : UIViewController {
         button.setTitle("       VIVO KEYD", for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont(name: "Arial", size: 40)
+        button.titleLabel?.font = UIFont(name: "Happy Monkey", size: 40)
         button.layer.cornerRadius = 12
         button.tag = 0
 
@@ -272,7 +278,7 @@ class MenuNovoJogo_Times : UIViewController {
         button2.setTitle("      LOUD", for: .normal)
         button2.backgroundColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         button2.setTitleColor(.black, for: .normal)
-        button2.titleLabel?.font = UIFont(name: "Arial", size: 40)
+        button2.titleLabel?.font = UIFont(name: "Happy Monkey", size: 40)
         button2.layer.cornerRadius = 12
         button2.tag = 1
 
@@ -281,7 +287,7 @@ class MenuNovoJogo_Times : UIViewController {
         button3.setTitle("      INTZ", for: .normal)
         button3.backgroundColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         button3.setTitleColor(.black, for: .normal)
-        button3.titleLabel?.font = UIFont(name: "Arial", size: 40)
+        button3.titleLabel?.font = UIFont(name: "Happy Monkey", size: 40)
         button3.layer.cornerRadius = 12
         button3.tag = 2
 
@@ -290,7 +296,7 @@ class MenuNovoJogo_Times : UIViewController {
         button4.setTitle("          TEAM LIQUID", for: .normal)
         button4.backgroundColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         button4.setTitleColor(.black, for: .normal)
-        button4.titleLabel?.font = UIFont(name: "Arial", size: 40)
+        button4.titleLabel?.font = UIFont(name: "Happy Monkey", size: 40)
         button4.layer.cornerRadius = 12
         button4.tag = 3
         
@@ -299,7 +305,7 @@ class MenuNovoJogo_Times : UIViewController {
         button5.setTitle("          CORINTHIANS", for: .normal)
         button5.backgroundColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         button5.setTitleColor(.black, for: .normal)
-        button5.titleLabel?.font = UIFont(name: "Arial", size: 40)
+        button5.titleLabel?.font = UIFont(name: "Happy Monkey", size: 40)
         button5.layer.cornerRadius = 12
         button5.tag = 4
 
@@ -488,7 +494,7 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
         titulo.text = "FF-Manager"
         titulo.textColor = .black
         titulo.adjustsFontSizeToFitWidth = true
-        titulo.font = titulo.font.withSize(70)
+        titulo.font = UIFont(name: "Happy Monkey", size: 80)
         titulo.textAlignment = .center
         
         //Adicionando labels
@@ -498,70 +504,70 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
         time.textColor = .black
         time.backgroundColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         time.adjustsFontSizeToFitWidth = true
-        time.font = time.font.withSize(30)
+        time.font = UIFont(name: "Happy Monkey", size: 30)
         time.textAlignment = .center
         
         mercado.frame = CGRect(x: 0, y: 106, width: 537, height: 47)
         mercado.text = "Mercado"
         mercado.textColor = .black
         mercado.adjustsFontSizeToFitWidth = true
-        mercado.font = mercado.font.withSize(35)
+        mercado.font = UIFont(name: "Happy Monkey", size: 35)
         mercado.textAlignment = .center
         
         labelMercadoTime.frame = CGRect(x: 23, y: 205, width: 96, height: 29)
         labelMercadoTime.text = "Time"
         labelMercadoTime.textColor = .black
         labelMercadoTime.adjustsFontSizeToFitWidth = true
-        labelMercadoTime.font = labelMercadoTime.font.withSize(25)
+        labelMercadoTime.font = UIFont(name: "Happy Monkey", size: 25)
         labelMercadoTime.textAlignment = .left
         
         labelMercadoRank.frame = CGRect(x: 104, y: 205, width: 96, height: 29)
         labelMercadoRank.text = "Rank"
         labelMercadoRank.textColor = .black
         labelMercadoRank.adjustsFontSizeToFitWidth = true
-        labelMercadoRank.font = labelMercadoRank.font.withSize(25)
+        labelMercadoRank.font = UIFont(name: "Happy Monkey", size: 25)
         labelMercadoRank.textAlignment = .left
         
-        labelMercadoNome.frame = CGRect(x: 175, y: 205, width: 96, height: 29)
+        labelMercadoNome.frame = CGRect(x: 195, y: 205, width: 96, height: 29)
         labelMercadoNome.text = "Nome"
         labelMercadoNome.textColor = .black
         labelMercadoNome.adjustsFontSizeToFitWidth = true
-        labelMercadoNome.font = labelMercadoNome.font.withSize(25)
+        labelMercadoNome.font = UIFont(name: "Happy Monkey", size: 25)
         labelMercadoNome.textAlignment = .left
         
-        labelMercadoPreço.frame = CGRect(x: 313, y: 205, width: 96, height: 29)
+        labelMercadoPreço.frame = CGRect(x: 322, y: 205, width: 96, height: 29)
         labelMercadoPreço.text = "Preço"
         labelMercadoPreço.textColor = .black
         labelMercadoPreço.adjustsFontSizeToFitWidth = true
-        labelMercadoPreço.font = labelMercadoPreço.font.withSize(25)
+        labelMercadoPreço.font = UIFont(name: "Happy Monkey", size: 25)
         labelMercadoPreço.textAlignment = .left
         
         labelMercadoComprar.frame = CGRect(x: 429, y: 205, width: 96, height: 29)
         labelMercadoComprar.text = "Comprar"
         labelMercadoComprar.textColor = .black
         labelMercadoComprar.adjustsFontSizeToFitWidth = true
-        labelMercadoComprar.font = labelMercadoComprar.font.withSize(25)
+        labelMercadoComprar.font = UIFont(name: "Happy Monkey", size: 25)
         labelMercadoComprar.textAlignment = .left
         
         gerente.frame = CGRect(x: 564, y: 289.670, width: 242.92, height: 23.72)
         gerente.text = "Gerente: " + (nome)
         gerente.textColor = .black
         gerente.adjustsFontSizeToFitWidth = true
-        gerente.font = gerente.font.withSize(27)
+        gerente.font = UIFont(name: "Happy Monkey", size: 27)
         gerente.textAlignment = .left
         
         numeroPartidas.frame = CGRect(x: 564, y: 352.25, width: 286.56, height: 23.72)
         numeroPartidas.text = "Número de partidas: " + String(format: "%i",nPartidas)
         numeroPartidas.textColor = .black
         numeroPartidas.adjustsFontSizeToFitWidth = true
-        numeroPartidas.font = numeroPartidas.font.withSize(27)
+        numeroPartidas.font = UIFont(name: "Happy Monkey", size: 27)
         numeroPartidas.textAlignment = .left
         
         numeroVit.frame = CGRect(x: 564, y: 416.25, width: 291.31, height: 23.72)
         numeroVit.text = "Número de vitórias: " + String(format: "%i",nVit)
         numeroVit.textColor = .black
         numeroVit.adjustsFontSizeToFitWidth = true
-        numeroVit.font = numeroVit.font.withSize(27)
+        numeroVit.font = UIFont(name: "Happy Monkey", size: 27)
         numeroVit.textAlignment = .left
         
         saldo.frame = CGRect(x: 564, y: 480.25, width: 276, height: 40)
@@ -569,23 +575,23 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
         saldo.textColor = .black
         saldo.backgroundColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         saldo.adjustsFontSizeToFitWidth = true
-        saldo.font = saldo.font.withSize(27)
+        saldo.font = UIFont(name: "Happy Monkey", size: 27)
         saldo.textAlignment = .left
         
         valorSaldo.frame = CGRect(x: 564, y: 480.25, width: 276, height: 40)
         valorSaldo.text = " R$ " + String(format: "%.2f", times[teste].cash)
         valorSaldo.textColor = #colorLiteral(red: 0.3529411765, green: 0.6823529412, blue: 0.1960784314, alpha: 1)
         valorSaldo.adjustsFontSizeToFitWidth = true
-        valorSaldo.font = valorSaldo.font.withSize(27)
+        valorSaldo.font = UIFont(name: "Happy Monkey", size: 27)
         valorSaldo.textAlignment = .right
 
         //Adicionando os botões
         
-        buttonNext.frame = CGRect(x: 1130, y: 20, width: 210, height: 53.14)
+        buttonNext.frame = CGRect(x: 1130, y: 20, width: 220, height: 53.14)
         buttonNext.setTitle("Ir para partida", for: .normal)
         buttonNext.backgroundColor = #colorLiteral(red: 0.3294117647, green: 0.6823529412, blue: 0.1960784314, alpha: 1)
         buttonNext.setTitleColor(.black, for: .normal)
-        buttonNext.titleLabel?.font = UIFont(name: "Arial", size: 30)
+        buttonNext.titleLabel?.font = UIFont(name: "Happy Monkey", size: 28)
         buttonNext.layer.cornerRadius = 20
         
         if jogadoresDentroDoTime.count < 4{
@@ -627,7 +633,7 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
         overallTime.text = String(mediaOverall)
         overallTime.textColor = .black
         overallTime.adjustsFontSizeToFitWidth = true
-        overallTime.font = numeroVit.font.withSize(24)
+        overallTime.font = UIFont(name: "Happy Monkey", size: 24)
         overallTime.textAlignment = .center
         
         
@@ -649,7 +655,7 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
         
         jogador01.textColor = .black
         jogador01.adjustsFontSizeToFitWidth = true
-        jogador01.font = numeroVit.font.withSize(24)
+        jogador01.font = UIFont(name: "Happy Monkey", size: 20)
         jogador01.textAlignment = .center
         
         star2.contentMode = .scaleToFill
@@ -668,7 +674,7 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
         }
         jogador02.textColor = .black
         jogador02.adjustsFontSizeToFitWidth = true
-        jogador02.font = numeroVit.font.withSize(24)
+        jogador02.font = UIFont(name: "Happy Monkey", size: 20)
         jogador02.textAlignment = .center
         
         star3.contentMode = .scaleToFill
@@ -687,7 +693,7 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
         }
         jogador03.textColor = .black
         jogador03.adjustsFontSizeToFitWidth = true
-        jogador03.font = numeroVit.font.withSize(24)
+        jogador03.font = UIFont(name: "Happy Monkey", size: 20)
         jogador03.textAlignment = .center
         
         star4.contentMode = .scaleToFill
@@ -706,7 +712,7 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
         }
         jogador04.textColor = .black
         jogador04.adjustsFontSizeToFitWidth = true
-        jogador04.font = numeroVit.font.withSize(24)
+        jogador04.font = UIFont(name: "Happy Monkey", size: 20)
         jogador04.textAlignment = .center
         
         star5.contentMode = .scaleToFill
@@ -723,7 +729,7 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
         }
         jogador05.textColor = .black
         jogador05.adjustsFontSizeToFitWidth = true
-        jogador05.font = numeroVit.font.withSize(24)
+        jogador05.font = UIFont(name: "Happy Monkey", size: 20)
         jogador05.textAlignment = .center
         
         star6.contentMode = .scaleToFill
@@ -740,7 +746,7 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
         }
         jogador06.textColor = .black
         jogador06.adjustsFontSizeToFitWidth = true
-        jogador06.font = numeroVit.font.withSize(24)
+        jogador06.font = UIFont(name: "Happy Monkey", size: 20)
         jogador06.textAlignment = .center
         
         
@@ -786,25 +792,25 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
         linhaEscalacaoV3.frame = CGRect(x: 1098.62, y: 586, width: 1, height: 344)
         linhaEscalacaoV3.image = UIImage(imageLiteralResourceName: "LinhaEscalaçãoVertical.png")
         
-        escalaçãoLabel.frame = CGRect(x: 565.26, y: 585.33, width: 533.28, height: 30.36)
+        escalaçãoLabel.frame = CGRect(x: 565.26, y: 585.33, width: 533.28, height: 27)
         escalaçãoLabel.text = "Escalação"
         escalaçãoLabel.textColor = .black
         escalaçãoLabel.adjustsFontSizeToFitWidth = true
-        escalaçãoLabel.font = escalaçãoLabel.font.withSize(30)
+        escalaçãoLabel.font = UIFont(name: "Happy Monkey", size: 25)
         escalaçãoLabel.textAlignment = .center
         
-        escalaçãoLabel2.frame = CGRect(x: 565.26, y: 618.54, width: 153.72, height: 30.36)
+        escalaçãoLabel2.frame = CGRect(x: 565.26, y: 618.54, width: 153.72, height: 27)
         escalaçãoLabel2.text = "Reservas"
         escalaçãoLabel2.textColor = .black
         escalaçãoLabel2.adjustsFontSizeToFitWidth = true
-        escalaçãoLabel2.font = escalaçãoLabel2.font.withSize(30)
+        escalaçãoLabel2.font = UIFont(name: "Happy Monkey", size: 25)
         escalaçãoLabel2.textAlignment = .center
         
-        escalaçãoLabel3.frame = CGRect(x: 718.98, y: 618.54, width: 379.56, height: 30.36)
+        escalaçãoLabel3.frame = CGRect(x: 718.98, y: 618.54, width: 379.56, height: 27)
         escalaçãoLabel3.text = "Títulares"
         escalaçãoLabel3.textColor = .black
         escalaçãoLabel3.adjustsFontSizeToFitWidth = true
-        escalaçãoLabel3.font = escalaçãoLabel3.font.withSize(30)
+        escalaçãoLabel3.font = UIFont(name: "Happy Monkey", size: 25)
         escalaçãoLabel3.textAlignment = .center
         
         
@@ -820,7 +826,7 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
         let font = UIFont.systemFont(ofSize: 25)
         segmentedMercado.setTitleTextAttributes([NSAttributedString.Key.font : font], for: .normal)
         
-        //view.addSubview(colorBackground)
+        view.addSubview(colorBackground)
         view.addSubview(titulo)
         view.addSubview(linhaPrincipal)
         view.addSubview(mercado)
