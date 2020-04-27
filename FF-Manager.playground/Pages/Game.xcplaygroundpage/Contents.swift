@@ -15,5 +15,3 @@ PlaygroundPage.current.liveView = navigation.scale(to: 0.5)
 
 
 
-
-

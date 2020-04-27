@@ -4,6 +4,9 @@ import PlaygroundSupport
 
 var teste:Int = 0
 var nome:String = "Nome"
+var result:Bool = true
+var nPartidas:Int = 0
+ var hist: [String] = []
 
 public class MenuPrincipalViewController : UIViewController {
     
@@ -438,7 +441,6 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
     var jogadores: [Jogador] = []
     
     var colorBackground = UIImageView()
-    var nPartidas:Int = 0
     var nVit:Int = 0
     var cash: Float = 300000.00
     var mediaOverall: Int = 0
@@ -1273,24 +1275,31 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
         }
     
         @IBAction func touchedButtonNext(){
-            var simulacao: Int = 0
-            simulacao = Int.random(in: 150...mediaOverall*5)
-            if simulacao > 230{
+            
+            var algoritmo: Int = 0
+            algoritmo = Int.random(in: 150...mediaOverall*5)
+            if algoritmo > 230{
                 times[teste].cash = times[teste].cash + 400
                 nVit = nVit + 1
+                result = true
             } else{
                 if times[teste].cash >= 200{
                 times[teste].cash = times[teste].cash - 200
                 } else{
                     times[teste].cash = 0.0
                 }
+                result = false
             }
+            
             nPartidas = nPartidas + 1
             numeroPartidas.text = "Número de partidas: " + String(format: "%i",nPartidas)
             numeroVit.text = "Número de vitórias: " + String(format: "%i",nVit)
             valorSaldo.text = " R$ " + String(format: "%.2f", times[teste].cash)
             mercadoTableView.reloadData()
             mercadoTableViewVenda.reloadData()
+            
+            let simulacao1 = Simulacao(screenType: .ipadPro12_9, isPortrait: false)
+            self.navigationController?.show(simulacao1, sender: nil)
         }
     
     public func calculamedia(){
@@ -1315,8 +1324,169 @@ public class Home : UIViewController, UITableViewDelegate, UITableViewDataSource
     }
 }
 
+public class Simulacao : UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+  //Declarando os componentes
+
+    let titulo = UILabel()
+    let buttonBack = UIButton()
+    let mapa = UIImageView()
+    let linhaPrincipal = UIImageView()
+    let status = UILabel()
+    let linhaStatus = UIImageView()
+    let linhaStatus2 = UIImageView()
+    let lbff = UILabel()
+    let buttonSpeed1x = UIButton()
+    let buttonPause = UIButton()
+    let buttonNext = UIButton()
+    let statusTableView = UITableView()
+    var positivo: String = "Vitória"
+    var negativo: String = "Derrota"
+            
+    override public func loadView() {
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.9803921569, green: 0.9529411765, blue: 0.9098039216, alpha: 1)
+        
+       //Adicionando o título principal
+        
+        titulo.frame = CGRect(x: 551.25, y: 0, width: 279.92, height: 81.6)
+        titulo.text = "FF-Manager"
+        titulo.textColor = .black
+        titulo.adjustsFontSizeToFitWidth = true
+        titulo.font = UIFont(name: "Happy Monkey", size: 80)
+        titulo.textAlignment = .center
+        
+        //Adicionando Label
+        
+        status.frame = CGRect(x: 0, y: 106, width: 537, height: 47)
+        status.text = "Status"
+        status.textColor = .black
+        status.adjustsFontSizeToFitWidth = true
+        status.font = UIFont(name: "Happy Monkey", size: 35)
+        status.textAlignment = .center
+    
+        lbff.frame = CGRect(x: 540, y: 130, width: 825, height: 70)
+        lbff.text = "LBFF - Série A"
+        lbff.textColor = .black
+        lbff.adjustsFontSizeToFitWidth = true
+        lbff.font = UIFont(name: "Happy Monkey", size: 35)
+        lbff.textAlignment = .center
+        
+        
+        //Adicionando os botões
+        
+        buttonBack.frame = CGRect(x: 16, y: 4, width: 77, height: 77)
+        buttonBack.setImage(UIImage(imageLiteralResourceName: "Back.png"), for: .normal)
+
+        
+        //Adicionando a imagem
+        
+        mapa.frame = CGRect(x: 627, y: 231, width: 670, height: 667)
+        mapa.contentMode = .scaleToFill
+        mapa.image = UIImage(imageLiteralResourceName: "mapa.png")
+        
+        buttonSpeed1x.frame = CGRect(x: 552, y: 963, width: 54, height: 38)
+        buttonSpeed1x.contentMode = .scaleToFill
+        buttonSpeed1x.setImage(UIImage(imageLiteralResourceName: "1x.png"), for: .normal)
+        
+        buttonPause.frame = CGRect(x: 927, y: 937, width: 54, height: 62)
+        buttonPause.contentMode = .scaleToFill
+        buttonPause.setImage(UIImage(imageLiteralResourceName: "pause.png"), for: .normal)
+        
+        buttonNext.frame = CGRect(x: 1315, y: 968, width: 41, height: 38)
+        buttonNext.contentMode = .scaleToFill
+        buttonNext.setImage(UIImage(imageLiteralResourceName: "next.png"), for: .normal)
+        
+        //Adicionando linhas
+        
+        linhaPrincipal.contentMode = .scaleToFill
+        linhaPrincipal.frame = CGRect(x: 0, y: 105, width: 1366.4, height: 1)
+        linhaPrincipal.image = UIImage(imageLiteralResourceName: "Line1.png")
+        
+        linhaStatus.contentMode = .scaleToFill
+        linhaStatus.frame = CGRect(x: 0, y: 153, width: 538, height: 1)
+        linhaStatus.image = UIImage(imageLiteralResourceName: "Line2.png")
+        
+        linhaStatus2.contentMode = .scaleToFill
+        linhaStatus2.frame = CGRect(x: 538, y: 105, width: 1, height: 919)
+        linhaStatus2.image = UIImage(imageLiteralResourceName: "Line3.png")
+        
+        //Adicionando a tableView
+        statusTableView.frame = CGRect(x: 0, y: 154, width: 537.5, height: 800)
+        statusTableView.register(StatusCell.self, forCellReuseIdentifier: "statusCell")
+        statusTableView.delegate = self
+        statusTableView.dataSource = self
+        statusTableView.isScrollEnabled = true
+        statusTableView.backgroundColor = .clear
+        
+        
+        view.addSubview(titulo)
+        view.addSubview(statusTableView)
+        view.addSubview(buttonBack)
+        view.addSubview(linhaPrincipal)
+        view.addSubview(status)
+        view.addSubview(linhaStatus)
+        view.addSubview(linhaStatus2)
+        view.addSubview(mapa)
+        view.addSubview(lbff)
+        view.addSubview(buttonNext)
+        view.addSubview(buttonPause)
+        view.addSubview(buttonSpeed1x)
+
+
+        
+        self.view = view
+        
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 130
+    }
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return hist.count
+    }
+
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "statusCell", for: indexPath) as? StatusCell
+            else { fatalError("The dequeued cell is not an instance of StatusCell.")
+                }
+            
+                cell.resultadoLabel.text = hist[indexPath.row]
+                cell.numeroLabel.text = String(indexPath.row+1)
+                
+        return cell
+    }
+    
+    override public func viewDidLoad() {
+        buttonBack.addTarget(self, action: #selector(self.touchedButtonBack), for: .touchUpInside)
+        buttonNext.addTarget(self, action: #selector(self.touchedButtonNext), for: .touchUpInside)
+    }
+    
+        @IBAction func touchedButtonBack(){
+            
+            navigationController?.popViewController(animated: true)
+        }
+    
+        @IBAction func touchedButtonNext(){
+            
+            if hist.count < nPartidas{
+                if result == true{
+                    hist.append(positivo)
+                }else{
+                    hist.append(negativo)
+                }
+                    statusTableView.reloadData()
+            }
+        }
+    
+}
+
 let menuPrincipalViewController = MenuPrincipalViewController(screenType: .ipadPro12_9, isPortrait: false)
 let menuNovoJogo_Nome = MenuNovoJogo_Nome(screenType: .ipadPro12_9, isPortrait: false)
 let menuNovoJogo_Times = MenuNovoJogo_Times(screenType: .ipadPro12_9, isPortrait: false)
 let home = Home(screenType: .ipadPro12_9, isPortrait: false)
+let simulacao = Simulacao(screenType: .ipadPro12_9, isPortrait: false)
 
